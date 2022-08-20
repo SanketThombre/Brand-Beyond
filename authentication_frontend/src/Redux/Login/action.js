@@ -31,7 +31,7 @@ export const login = ({ email, password }) =>(dispatch)=> {
         alert("Admin Login Successful");
     }
     else {
-        axios.post("http://localhost:5000/login", { email, password })
+        axios.post("https://brand-beyond-backend.herokuapp.com/login", { email, password })
 
             .then((res) => {
                 console.log(res);

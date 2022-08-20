@@ -86,7 +86,7 @@ export const Signup = () => {
             alert("Please fill all fields")
         }
         else {
-             axios.post("http://localhost:5000/register", state)
+             axios.post("https://brand-beyond-backend.herokuapp.com/register", state)
                 .then((res) => {
                     console.log(res, "res")
                             
