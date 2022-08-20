@@ -12,16 +12,24 @@ export const Login = () => {
     const navigate = useNavigate();
     const { isAuthenticated } = useSelector((state) => state.login);
     const dispatch = useDispatch();
-    const [username, setEmail] = useState('');
+    const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
     const handleSubmit = () => { 
-        const payload = { username, password };
+        const payload = { email, password };
         dispatch(login(payload));
     }
+    
+    
 
     if (isAuthenticated) {
-        navigate("/");  
+        if (email == "admin" && password == "admin") { 
+            navigate('/admin');
+        }
+        else {
+            navigate("/");
+        }
+          
     }
 
     return (
@@ -32,10 +40,10 @@ export const Login = () => {
            <TextField
           required
                 id="outlined-required"
-                value={username}
+                value={email}
                 label="Email"
                 onChange={(e)=>setEmail(e.target.value)}
-        //   defaultValue="username"
+       
             />
             <br />
             <br />
@@ -48,7 +56,7 @@ export const Login = () => {
           label="Password"
                 value={password}
                 onChange={(e)=>setPassword(e.target.value)}
-          //   defaultValue="Hello World"
+          
             />
             
             <br />

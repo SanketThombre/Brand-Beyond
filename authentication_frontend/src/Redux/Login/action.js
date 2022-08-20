@@ -22,21 +22,28 @@ export const logout = () => ({
     type: "LOGOUT",
 });
 
-export const login = ({ username, password }) =>(dispatch)=> { 
+export const login = ({ email, password }) =>(dispatch)=> { 
 
     dispatch(loginLoading());
-    axios.post("https://miniecommerce-backend.herokuapp.com/login", { username, password })
 
-        .then((res) => {
-
-            dispatch(loginSuccess({ username, token: res.data.token }));
-            alert("Login Successful");
-         })
-        .catch((res) => {
-            console.log(res);
-            alert(res.response.data.message);
-        dispatch(loginFailure());
+    if (email === "admin" && password === "admin") {
+        dispatch(loginSuccess({ username: "Admin", token: "admin" }));
+        alert("Admin Login Successful");
     }
-    );
+    else {
+        axios.post("http://localhost:5000/login", { email, password })
+
+            .then((res) => {
+                console.log(res);
+                dispatch(loginSuccess({ email, token: res.data.token, username: res.data.user.username }));
+                alert("Login Successful");
+            })
+            .catch((res) => {
+                console.log(res);
+                alert(res.response.data.message);
+                dispatch(loginFailure());
+            }
+            );
+    }
 }
 

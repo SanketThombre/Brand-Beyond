@@ -7,6 +7,7 @@ import { Signup } from './Components/Signup';
 import { Navbar } from './Components/Navbar';
 import { useSelector } from 'react-redux';
 import { PrivateRoute } from './Components/PrivateRoute';
+import { Admin } from './Components/Admin';
 
 
 
@@ -21,6 +22,10 @@ const {isAuthenticated} = useSelector(state => state.login);
         <Route path="/" element={
         <PrivateRoute isAuthenticated={isAuthenticated}>  
             <Home />
+          </PrivateRoute>} />
+          <Route path="/admin" element={
+        <PrivateRoute isAuthenticated={isAuthenticated}>  
+            <Admin />
             </PrivateRoute> } />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />

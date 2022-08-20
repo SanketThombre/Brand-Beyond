@@ -86,7 +86,7 @@ export const Signup = () => {
             alert("Please fill all fields")
         }
         else {
-             axios.post("https://miniecommerce-backend.herokuapp.com/register", state)
+             axios.post("http://localhost:5000/register", state)
                 .then((res) => {
                     console.log(res, "res")
                             
