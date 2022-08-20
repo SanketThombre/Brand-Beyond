@@ -14,6 +14,8 @@ export const Home = () => {
             <WlcDiv>
                 <img  src="https://images.unsplash.com/photo-1432821596592-e2c18b78144f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8bG9naW58ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60" width="100%" height="100%" alt="" />
             </WlcDiv>
+
+            <h3 style={{marginBottom:"20px"}}>Note : For Admin Panel Login plz put email and password as "admin"</h3>
         </>
     )
 }
